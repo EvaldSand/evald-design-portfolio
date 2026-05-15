@@ -12,7 +12,7 @@ export default function Nav() {
         </Link>
         <div className="flex items-center gap-6">
           <Link
-            href="/work/hotel-upsells"
+            href="/"
             className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
           >
             Work

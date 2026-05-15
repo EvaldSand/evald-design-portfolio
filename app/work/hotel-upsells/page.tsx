@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Hotel Upsells App — Evald Sand",
   description:
-    "Case study: designing a multi-role upsell workflow for hotel operations, from first sketch to shipped product.",
+    "Case study: building a multi-role upsell workflow for hotel operations, from first sketch to shipped product.",
 };
 
 export default function HotelUpsellsPage() {
@@ -29,9 +29,9 @@ export default function HotelUpsellsPage() {
           Hotel Upsells App
         </h1>
         <p className="text-base text-[var(--muted)] leading-relaxed max-w-xl">
-          A full upsell workflow for hotel operations. Four roles, real money
-          moving through the system, one product that had to work for everyone
-          from the front desk to the finance director.
+          Room upgrades, late checkouts, F&B add-ons — hotels have upsell
+          revenue sitting on the table. Tracking it was another story. I built
+          the app to close that gap.
         </p>
         <div className="flex flex-wrap gap-2 mt-5">
           {["Product Design", "Multi-role UX", "Next.js", "Shipped"].map(
@@ -47,6 +47,15 @@ export default function HotelUpsellsPage() {
         </div>
       </header>
 
+      {/* Hero image */}
+      <div className="mb-12">
+        <img
+          src="/images/hotel-upsells/screenshot-1.png"
+          alt="Hotel front desk — the starting point for every upsell conversation"
+          className="w-full rounded border border-[var(--border)]"
+        />
+      </div>
+
       {/* Body */}
       <div className="space-y-12 text-sm leading-relaxed">
         {/* Context */}
@@ -56,17 +65,20 @@ export default function HotelUpsellsPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              Hotel upsells — room upgrades, late checkouts, early check-ins —
-              are a real revenue line. In most hotels they&apos;re also a mess.
-              The front desk offers something, writes it on a sticky note, and
-              three days later finance is trying to reconcile charges that
-              nobody documented properly.
+              Upsell requests used to travel through the hotel on an Excel sheet.
+              An agent would fill it in, then pass it up a chain: supervisor,
+              front desk manager, accounting, rooms director, director of
+              finance. If any piece of information was wrong at any step, the
+              whole sheet came back to the beginning.
             </p>
             <p>
-              I built this as a personal project to solve that problem end to
-              end. Not a prototype. A real product with real roles, real
-              permissions, and a workflow that mirrors how hotels actually
-              operate.
+              Batching everything into one document meant one person&apos;s mistake
+              held up everyone else&apos;s approvals. Commissions were slow because
+              payouts waited for the full reconciliation at month end. Finance
+              had no live view — just a spreadsheet that arrived after the fact.
+              Digital submission fixes all of this: each upsell moves through
+              the chain on its own, approvals happen in real time, and the
+              finance view is always current.
             </p>
           </div>
         </section>
@@ -78,16 +90,19 @@ export default function HotelUpsellsPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              The real friction wasn&apos;t the upsell itself. It was the
-              handoff. The clerk who offers the upgrade isn&apos;t the same
-              person who approves it. The approver isn&apos;t the same person
-              who reconciles it with finance. That three-step chain breaks down
-              constantly — and when it breaks, the hotel either loses the
-              revenue or the guest gets charged incorrectly.
+              The breakdown happens at the handoff. The clerk who submits the
+              request isn&apos;t the person who approves it. The approver isn&apos;t
+              the person who reconciles it. You get three people, each with a
+              slightly different version of what was agreed, and no single place
+              where all three versions live.
             </p>
             <p>
-              Most tools try to solve this with a single form. That&apos;s the
-              wrong frame. You need a workflow, not a form.
+              A shared form or spreadsheet gets you data in one place, but it
+              doesn&apos;t give anyone the right view of that data. A form built for
+              a clerk doesn&apos;t work for an approver mid-shift. A spreadsheet
+              that works for finance is useless at the front desk. The same
+              transaction needs to be shown differently to each person who
+              touches it.
             </p>
           </div>
         </section>
@@ -99,42 +114,23 @@ export default function HotelUpsellsPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              I started by mapping the roles. There are four people in the
-              chain: the Clerk who submits an upsell request, the Approver who
-              reviews and accepts or rejects it, the Finance Director who tracks
-              what&apos;s been charged, and the Admin who manages the system. Each
-              one needs a different view, different permissions, and a different
-              set of actions.
+              I mapped out four roles before writing a line of code: Clerk,
+              Approver, Finance Director, Admin. Each has a genuinely different
+              mental model of the same transaction. The clerk is thinking about
+              the guest in front of them. The approver is thinking about room
+              availability. Finance is thinking about the revenue line.
             </p>
             <p>
-              The design challenge was keeping these four surfaces coherent.
-              Same design language, different information hierarchy. A clerk
-              doesn&apos;t need to see revenue summaries. A finance director
-              doesn&apos;t need to see the guest request form. Getting that
-              separation right — without building four completely separate apps
-              — was most of the work.
-            </p>
-            <p>
-              I used Clerk for authentication with role-based access, Convex as
-              the backend (real-time by default, which matters when an approver
-              is acting on a request the clerk just submitted), and Next.js with
-              Tailwind for the frontend. The role switching is session-based so
-              you can demo all four views without logging in and out.
+              The design challenge was not just access control. The interfaces
+              had to feel different in a way that matched how each person
+              actually works. On the technical side: Clerk for authentication
+              with session-based role switching, Convex as the real-time
+              backend, Next.js and Tailwind for the frontend. Getting role
+              switching stable without forcing a full re-auth on every navigation
+              took a couple of attempts.
             </p>
           </div>
         </section>
-
-        {/* Image placeholder */}
-        <div className="bg-[var(--border)] rounded-lg h-56 flex items-center justify-center">
-          <span className="text-sm text-[var(--muted)]">
-            Screenshot — clerk submission view
-          </span>
-        </div>
-        <div className="bg-[var(--border)] rounded-lg h-56 flex items-center justify-center">
-          <span className="text-sm text-[var(--muted)]">
-            Screenshot — approver review view
-          </span>
-        </div>
 
         {/* Outcome */}
         <section>
@@ -143,7 +139,7 @@ export default function HotelUpsellsPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              Shipped. All 28 tickets from v1.0 closed. The product is live at{" "}
+              Shipped. All 28 v1.0 tickets closed. The product is live at{" "}
               <a
                 href="https://hotel-upsells.vercel.app"
                 target="_blank"
@@ -153,13 +149,9 @@ export default function HotelUpsellsPage() {
                 hotel-upsells.vercel.app
               </a>
               . You can log in with the demo credentials and switch between all
-              four roles.
-            </p>
-            <p>
-              The thing I&apos;m most satisfied with: the clerk and finance
-              director views feel like different products, but they&apos;re sharing
-              the same data model and the same design system. That coherence was
-              a deliberate choice, and it holds.
+              four roles. The clerk view and the finance director view feel like
+              different products, but they share the same data model and design
+              system.
             </p>
           </div>
         </section>
@@ -171,13 +163,18 @@ export default function HotelUpsellsPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              If I were starting over, I&apos;d spend more time on the approver
-              flow before building. The approval screen went through three
-              iterations because I kept discovering edge cases — partial
-              approvals, approvals with notes, time-sensitive requests — that I
-              hadn&apos;t accounted for upfront. The clerk flow was right first time.
-              The lesson is that the middle of a workflow is always harder than
-              the ends.
+              The clerk flow was right on the first try. The approver flow took
+              three iterations, and I should have seen that coming. The middle
+              of a workflow is where the edge cases live: partial approvals,
+              approvals with conditions attached, time-sensitive requests where
+              the guest is checking out in an hour.
+            </p>
+            <p>
+              None of those came up in the initial spec. They showed up when I
+              was actually using the app. If I&apos;d spent an hour with a real
+              approver before building, I think I would have caught most of them
+              upfront. The approver experience is its own domain — I know the
+              front desk side of it, not that side.
             </p>
           </div>
         </section>

@@ -29,10 +29,9 @@ export default function PowerPagesPage() {
           PowerPages Rate Code App
         </h1>
         <p className="text-base text-[var(--muted)] leading-relaxed max-w-xl">
-          Built at hotel reception during the first COVID lockdown. The team
-          couldn&apos;t keep up with rate code lookups. So I built something to
-          fix it — with no formal development background, on a Microsoft tool I
-          had never used before.
+          Built at hotel reception during the first COVID lockdown. Rates were
+          changing fast, the team was growing, and rate knowledge lived in
+          one person&apos;s head.
         </p>
         <div className="flex flex-wrap gap-2 mt-5">
           {[
@@ -60,18 +59,14 @@ export default function PowerPagesPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              Spring 2020. The hotel was running on a skeleton crew. My team
-              had gone from a full front desk operation to three people covering
-              everything — check-ins, calls, reservations. Volume was low but
-              complexity was high: rates were changing almost daily as the
-              situation evolved, and every guest had a different rate code that
-              needed to be looked up manually in a spreadsheet that was two
-              versions behind.
+              Spring 2020. The hotel was running on a skeleton crew, three
+              people covering what had been a full front desk operation.
+              Check-ins, calls, reservations. All of it. Volume was low but
+              complexity was high: rates were changing almost daily, and every
+              guest had a different rate code that needed to be looked up.
             </p>
             <p>
-              I was a reception supervisor. Not a developer. I had Microsoft
-              365, some time, and a problem that was making the team slower than
-              it needed to be.
+              I was a reception supervisor. Not a developer.
             </p>
           </div>
         </section>
@@ -83,18 +78,17 @@ export default function PowerPagesPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              Rate codes are the internal shorthand hotels use to track pricing
-              — corporate rates, leisure packages, loyalty tiers, promotional
+              Rate codes are the internal shorthand hotels use to track pricing:
+              corporate rates, leisure packages, loyalty tiers, promotional
               offers. Each one has conditions. Each one has a different price
-              for different room types. And in 2020, the list was being updated
-              faster than anyone could keep track of.
+              depending on room type.
             </p>
             <p>
-              The team was looking things up in a shared Excel file. The file
-              had tabs, no search, and no clear owner. When rates changed, the
-              file sometimes got updated. Sometimes it didn&apos;t. Mistakes made it
-              to guests. That&apos;s a revenue problem and a trust problem at the same
-              time.
+              When the team was small, one person held all the rate knowledge
+              and passing it on was easy. You could just ask. Then hiring picked
+              up. New front desk agents needed to look up rates themselves, and
+              there was no good way to do that without already knowing what to
+              look for. The knowledge didn&apos;t scale.
             </p>
           </div>
         </section>
@@ -106,34 +100,82 @@ export default function PowerPagesPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              I found Microsoft PowerPages — a low-code tool in the 365 suite
-              for building simple internal web apps on top of SharePoint data.
-              I had never used it. But the problem was clear enough that the
-              tool almost didn&apos;t matter: I needed a searchable front-end on top
-              of a structured data source, with one person owning updates.
+              I built an Excel prototype first, just to test the concept. Type
+              in a rate code, get back all the rate info and pricing thresholds.
+              No tabs to navigate, no prior knowledge required. It worked. People
+              started using it, which told me the problem was real.
             </p>
+
+            <div className="my-6">
+              <img
+                src="/images/powerpages/Excel Prototype.png"
+                alt="Excel prototype for rate code lookups"
+                className="w-full rounded border border-[var(--border)]"
+              />
+              <p className="text-sm text-[var(--muted)] mt-2">
+                My Excel prototype — the first test of the concept.
+              </p>
+            </div>
+
             <p>
-              The first version took a weekend. A search interface connected to
-              a SharePoint list, styled to match the hotel&apos;s internal branding.
-              I showed it to the team on Monday. They started using it the same
-              day.
+              Once I knew it was worth building properly, I sketched it on
+              paper. What does someone at the front desk actually need when a
+              guest is standing in front of them? Find the code fast, confirm
+              the price, move on. The wireframes settled the layout before I
+              touched a single tool.
+            </p>
+
+            <div className="my-6">
+              <img
+                src="/images/powerpages/paper-wireframe-1.jpg"
+                alt="Paper wireframe sketches for the rate code lookup interface"
+                className="w-full rounded border border-[var(--border)]"
+              />
+              <p className="text-sm text-[var(--muted)] mt-2">
+                Paper first, then build.
+              </p>
+            </div>
+
+            <p>
+              I rebuilt it in Microsoft PowerPages, a low-code tool in the 365
+              suite for building internal web apps on top of SharePoint data.
+              I had never used it. The first version took a weekend. A search
+              interface connected to a SharePoint list, styled to match the
+              hotel&apos;s internal branding. The team started using it the same
+              day I showed them.
             </p>
             <p>
               The second version added filtering by rate type and a flag for
-              recently updated codes — the ones most likely to catch someone
-              out. That came from watching the team use v1 for a week. One
-              person kept filtering by hand because she didn&apos;t trust the older
-              entries. So I gave her a way to sort by update date.
+              recently updated codes. That came from watching a team member use
+              v1 for a week. She kept filtering by hand because she didn&apos;t
+              trust older entries. I gave her a way to sort by update date.
+              Five minutes of work. It mattered because I had watched the
+              problem happen.
             </p>
+
+            <div className="my-6">
+              <img
+                src="/images/powerpages/Rate Search Window.png"
+                alt="The finished rate code search interface built in PowerPages"
+                className="w-full rounded border border-[var(--border)]"
+              />
+              <p className="text-sm text-[var(--muted)] mt-2">
+                The finished search window.
+              </p>
+            </div>
+
+            <div className="my-6">
+              <img
+                src="/images/powerpages/Rate Info Window.png"
+                alt="Rate code detail view"
+                className="w-full rounded border border-[var(--border)]"
+              />
+              <p className="text-sm text-[var(--muted)] mt-2">
+                The detail view.
+              </p>
+            </div>
           </div>
         </section>
-
-        {/* Image placeholder */}
-        <div className="bg-[var(--border)] rounded-lg h-56 flex items-center justify-center">
-          <span className="text-sm text-[var(--muted)]">
-            Screenshot — rate code search interface
-          </span>
-        </div>
 
         {/* Outcome */}
         <section>
@@ -142,17 +184,15 @@ export default function PowerPagesPage() {
           </h2>
           <div className="space-y-3 text-[var(--foreground)]">
             <p>
-              The team stopped using the spreadsheet. Not because I told them
-              to — because the app was faster. His team picked it up after
-              watching a quick Loom once. Rate-related errors at check-in
-              dropped noticeably over the following month.
+              The team stopped using the spreadsheet. Not because anyone told
+              them to. The app was just faster. A new hire could find the rate
+              they needed without tracking down a supervisor.
             </p>
             <p>
-              More importantly: I learned something that shaped everything I&apos;ve
-              built since. The right tool for a problem is the one you can
-              actually build with the access you have. And the right solution
-              is one that the person using it trusts — which means it has to be
-              accurate, fast, and honest about what it doesn&apos;t know.
+              The information stopped living in one person&apos;s head. A new agent
+              on their first shift could look up a rate themselves. That&apos;s what
+              the tool actually did: it moved the knowledge out of informal
+              mentorship and into something anyone could access.
             </p>
           </div>
         </section>
@@ -166,10 +206,13 @@ export default function PowerPagesPage() {
             <p>
               The data ownership problem was never fully solved. The app was
               only as good as the person keeping the SharePoint list updated.
-              When I left that role, I handed it off — but without a clear
-              owner, it degraded over time. The lesson I&apos;ve carried: building
-              the interface is the easy part. Designing the maintenance habit
-              around it is the harder design problem.
+              When I left that role I handed it off, but without a clear owner
+              it degraded over time.
+            </p>
+            <p>
+              Building the interface is the easy part. The harder problem is
+              designing the maintenance habit around it. I built a good front
+              door. The room behind it still needed tending.
             </p>
           </div>
         </section>
